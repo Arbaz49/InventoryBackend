@@ -23,7 +23,7 @@ mongoose.connect(uri).then((res)=>{
 
 //routes
 app.get("/",(req,res)=>{
-    res.sendFile({
+    res.send({
         message: "Hello world"
     })
 })
