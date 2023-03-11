@@ -22,6 +22,11 @@ mongoose.connect(uri).then((res)=>{
 })
 
 //routes
+app.get("/",(req,res)=>{
+    res.sendFile({
+        message: "Hello world"
+    })
+})
 app.use("/api/v1/auth",userRouter);
 app.use("/product",productRouter);
 app.use("/supplier",supplierRouter);
