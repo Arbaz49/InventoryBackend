@@ -32,7 +32,6 @@ app.use("/product",productRouter);
 app.use("/supplier",supplierRouter);
 app.use("/purchase",purchaseRouter);
 app.use("/payment",paymentRouter);
-// app.use("/test",testRouter);
 
 //error handling
 app.use(GlobalErrorHandler);
