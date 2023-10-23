@@ -13,7 +13,7 @@ supplierRouter
 const app = express();
 app.use(express.json());
 app.use(cors())
-const uri=process.env.MONGO_URI.replace("<username>",process.env.USERNAME).replace("<password>",process.env.PASSWORD);
+const uri=process.env.MONGO_URI.replace("<username>",process.env.MONGO_USERNAME).replace("<password>",process.env.PASSWORD);
 
 mongoose.connect(uri).then((res)=>{
     console.log("connected to mongoDB");

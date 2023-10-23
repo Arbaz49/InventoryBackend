@@ -30,8 +30,7 @@ const paymentVerification = catchErrorAsync(async (req, res, next) => {
     .createHmac("sha256", process.env.KEY_SECRET)
     .update(body.toString())
     .digest("hex");
-  // console.log("sig received ", razorpay_signature);
-  // console.log("sig generated ", expectedSignature);
+
 let isAutheticate=razorpay_signature===expectedSignature;
 if(isAutheticate){
 let order=await Order.create({
@@ -39,7 +38,7 @@ let order=await Order.create({
 })
 
 }else{
-  res.status(4000).json({
+  res.status(400).json({
 message:"failed"
   })
 }
