@@ -8,14 +8,14 @@ import productRouter from "./routes/productRoutes.js"
 // import testRouter from "./routes/advancedRoutes.js"
 import supplierRouter from "./routes/supplierRoutes.js"
 import purchaseRouter from "./routes/purchaseRoutes.js"
-import paymentRouter from "./routes/paymentRoutes.js"
+// import paymentRouter from "./routes/paymentRoutes.js"
 supplierRouter
 const app = express();
 app.use(express.json());
 app.use(cors())
 const uri=process.env.MONGO_URI.replace("<username>",process.env.MONGO_USERNAME).replace("<password>",process.env.PASSWORD);
 
-mongoose.connect(uri).then((res)=>{
+mongoose.connect("mongodb+srv://arbaz:arbaz123@cluster0.hbai9fm.mongodb.net/Inventory?retryWrites=true&w=majority&appName=Cluster0").then((res)=>{
     console.log("connected to mongoDB");
 }).catch((err)=>{
     console.log(err)
@@ -31,7 +31,7 @@ app.use("/api/v1/auth",userRouter);
 app.use("/product",productRouter);
 app.use("/supplier",supplierRouter);
 app.use("/purchase",purchaseRouter);
-app.use("/payment",paymentRouter);
+// app.use("/payment",paymentRouter);
 
 //error handling
 app.use(GlobalErrorHandler);

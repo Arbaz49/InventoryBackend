@@ -40,15 +40,17 @@ const protect = catchErrorAsync(async (req, res, next) => {
 
 //Login
 const Login = catchErrorAsync(async (req, res, next) => {
-  // console.log(req.body)
-  const user = await UserModel.findOne({ email: req.body.email });
+  console.log("body",req.body.email)
+  const email=req.body.email;
+  const user = await UserModel.findOne({ email:email})
+  console.log("user",user)
   if (!user) return next(new apiErrorsModel("not found", 404));
   if (!(await user.verifyPassword(req.body.password, user.password))) {
     return next(new apiErrorsModel("incorrect credentials", 401));
   }
   const token = tokenCreation(user._id);
   const { password, ...info } = user._doc;
-  // console.log(user.password);
+  console.log(user.password);
   res.cookie("token", token);
   res.status(200).json({
     message: "success",

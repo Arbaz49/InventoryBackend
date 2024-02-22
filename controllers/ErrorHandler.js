@@ -24,7 +24,7 @@ const dvelopmentErrors=(err,res)=>{
         }
         err.statuscode=err.statuscode || 500;
         err.status=err.status||"server error";
-        if(process.env.NODE_ENV=="development") dvelopmentErrors(err,res);
+        if(process.env.NODE_ENV=="prod") dvelopmentErrors(err,res);
         else productionErrors(err,res);
     }
     
