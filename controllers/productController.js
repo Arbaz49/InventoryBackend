@@ -7,7 +7,6 @@ import apiErrorsModel from "../utils/clientErrorsController.js";
 //CREATE Product protected
 const createProduct=catchErrorAsync(async(req,res,next)=>{
     req.user=JSON.parse(req.user)
-    // console.log(req.user._id)
     let user = await UserModel.findById(req.user._id);
     if (!user) return next(new apiErrorsModel("not found", 404));
     user=JSON.parse(JSON.stringify(user));
